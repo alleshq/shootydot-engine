@@ -46,3 +46,6 @@ setInterval(() => {
 
 //Join
 app.post("/join", require("./api/join"));
+
+//Stats
+app.get("/stats", require("./api/stats"));

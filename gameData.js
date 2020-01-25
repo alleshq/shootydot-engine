@@ -1,6 +1,7 @@
 const game = {
     players: {},
-    stars: []  
+    stars: [],
+    serverStart: new Date()
 };
 
 module.exports = game;
