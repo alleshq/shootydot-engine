@@ -36,6 +36,6 @@ setInterval(() => {
 
     //Game Functions
     require("./gameFunctions/newStar")();
-    require("./gameFunctions/movePlayers")();
+    require("./gameFunctions/playerUpdate")();
 
 }, 1000 / config.tickSpeed);

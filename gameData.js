@@ -5,7 +5,7 @@ const game = {
             score: 100,
             effects: [],
             plague: false,
-            speed: 10,
+            speed: 3,
             speedBoost: false,
             x: 0,
             y: 0,
