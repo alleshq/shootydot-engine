@@ -1,0 +1,5 @@
+{
+    "tickSpeed": 10,
+    "mapSize": 1000,
+    "innerMap": 500
+}
