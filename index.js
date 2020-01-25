@@ -39,3 +39,10 @@ setInterval(() => {
     require("./gameFunctions/playerUpdate")();
 
 }, 1000 / config.tickSpeed);
+
+
+
+/////// HTTP API ///////
+
+//Join
+app.post("/join", require("./api/join"));
