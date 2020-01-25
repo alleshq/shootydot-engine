@@ -11,12 +11,18 @@ http.listen(8081);
 //Setup Functions
 require("./gameFunctions/generateStars");
 
-//Socket.io Emit
+//Tick
 setInterval(() => {
+
+    //Emit Game Data
     io.emit("data", {
         players: game.players.map(player => ({
             name: player.name
         })),
         stars: game.stars
     });
+
+    //Game Functions
+    require("./gameFunctions/newStar")();
+
 }, 1000 / config.tickSpeed);
