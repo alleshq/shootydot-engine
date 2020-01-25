@@ -1,5 +1,17 @@
 const game = {
-    players: [],
+    players: {
+        "abc": {
+            name: "Archie",
+            score: 100,
+            effects: [],
+            plague: false,
+            speed: 10,
+            speedBoost: false,
+            x: 0,
+            y: 0,
+            direction: 0
+        }
+    },
     stars: []  
 };
 

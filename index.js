@@ -9,20 +9,33 @@ const io = require("socket.io")(http);
 http.listen(8081);
 
 //Setup Functions
-require("./gameFunctions/generateStars");
+require("./gameFunctions/generateStars")();
 
 //Tick
 setInterval(() => {
 
     //Emit Game Data
     io.emit("data", {
-        players: game.players.map(player => ({
-            name: player.name
-        })),
+        players: (() => {
+            const players = {};
+            Object.keys(game.players).forEach(id => {
+                const player = game.players[id];
+                players[id] = {
+                    name: player.name,
+                    score: player.score,
+                    x: player.x,
+                    y: player.y,
+                    speedBoost: player.speedBoost,
+                    plague: player.plague
+                };
+            });
+            return players;
+        })(),
         stars: game.stars
     });
 
     //Game Functions
     require("./gameFunctions/newStar")();
+    require("./gameFunctions/movePlayers")();
 
 }, 1000 / config.tickSpeed);
