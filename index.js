@@ -42,6 +42,7 @@ setInterval(() => {
     //Game Functions
     require("./gameFunctions/newStar")();
     require("./gameFunctions/playerUpdate")();
+    require("./gameFunctions/bulletUpdate")();
 
 }, 1000 / config.tickSpeed);
 

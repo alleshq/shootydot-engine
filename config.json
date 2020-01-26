@@ -4,5 +4,6 @@
     "innerMap": 500,
     "stars": 500,
     "secretLength": 128,
-    "maxBullets": 500
+    "maxBullets": 500,
+    "bulletSpeed": 5
 }
