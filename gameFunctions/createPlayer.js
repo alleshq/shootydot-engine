@@ -9,6 +9,7 @@ module.exports = (id, name, effects) => {
         score: 100,
         effects,
         secret,
+        color: "#e74c3c",
         plague: Math.floor(Math.random() * 5),
         bulletPower: 2,
         speed: 2,
