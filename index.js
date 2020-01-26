@@ -41,9 +41,15 @@ setInterval(() => {
 
 }, 1000 / config.tickSpeed);
 
+//Socket.io Connection
+io.on("connection", socket => {
 
-
-/////// HTTP API ///////
+    //Player Action
+    socket.on("action", data => {
+        console.log(data);
+    });
+    
+});
 
 //Join
 app.post("/join", require("./api/join"));
