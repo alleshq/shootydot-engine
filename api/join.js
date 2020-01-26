@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     const teams = req.user.teams.map(team => team.teamid);
     var color;
     if (teams.includes("alles")) {
-        color = "#23539e";
+        color = "#4287f5";
     } else {
         color = "#e74c3c";
     }
