@@ -19,6 +19,11 @@ module.exports = () => {
             if (player.speedBoost.full < 100) player.speedBoost.full += 0.2;
         }
 
+        //Plague
+        if (player.plague && Math.floor(Math.random() * 5) === 0) {
+            player.score--;
+        }
+
         //Map Bounds
         if (
             player.x < 0 - config.mapSize / 2 ||
