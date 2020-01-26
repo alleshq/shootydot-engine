@@ -1,5 +1,5 @@
 {
-    "tickSpeed": 10,
+    "tickSpeed": 20,
     "mapSize": 1000,
     "innerMap": 500,
     "stars": 500,
