@@ -74,7 +74,7 @@ io.on("connection", socket => {
                 game.bullets.push({
                     owner: data.id,
                     bulletPower: player.bulletPower,
-                    direction: player.direction,
+                    direction: player.effects.includes("sharpshooter") ? player.direction : player.direction + (Math.random() * 10 - 5),
                     x: player.x,
                     y: player.y,
                     plague: player.plague
