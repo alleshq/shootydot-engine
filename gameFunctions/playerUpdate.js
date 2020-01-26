@@ -7,9 +7,17 @@ module.exports = () => {
         const player = game.players[id];
 
         //Movement
-        const movement = calculateMovement(player.direction, player.speed * (player.speedBoost ? 2 : 1));
+        const movement = calculateMovement(player.direction, player.speed * (player.speedBoost.active ? 2 : 1));
         player.x += movement.x;
         player.y += movement.y;
+
+        //Speed Boost
+        if (player.speedBoost.active) {
+            player.speedBoost.full -= 1;
+            if (player.speedBoost.full <= 0) player.speedBoost.active = false;
+        } else {
+            if (player.speedBoost.full < 100) player.speedBoost.full += 1;
+        }
 
         //Map Bounds
         if (

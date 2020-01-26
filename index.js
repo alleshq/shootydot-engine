@@ -55,6 +55,12 @@ io.on("connection", socket => {
             case "changeDirection":
                 player.direction = data.param;
                 break;
+            
+            //Activate Speed Boost
+            case "speedBoost":
+                if (player.speedBoost.full < 100) return;
+                player.speedBoost.active = true;
+                break;
 
         }
 
