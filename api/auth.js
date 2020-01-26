@@ -16,12 +16,11 @@ module.exports = (req, res) => {
             username: credentials.allesOAuth.id,
             password: credentials.allesOAuth.secret
         }
-    }).then(res => {
+    }).then(response => {
         res.json({
-            token: res.data.token
+            token: response.data.access_token
         });
     }).catch((err) => {
-        console.log(err.response.data);
         res.status(500).json({err: "oauthFailed"});
     });
 };
