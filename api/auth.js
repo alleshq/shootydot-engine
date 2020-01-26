@@ -1,4 +1,3 @@
-const config = require("../config");
 const credentials = require("../credentials");
 const axios = require("axios");
 
@@ -20,7 +19,7 @@ module.exports = (req, res) => {
         res.json({
             token: response.data.access_token
         });
-    }).catch((err) => {
-        res.status(500).json({err: "oauthFailed"});
+    }).catch(() => {
+        res.status(401).json({err: "oauthFailed"});
     });
 };

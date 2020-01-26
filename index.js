@@ -1,5 +1,6 @@
 const game = require("./gameData");
 const config = require("./config");
+const tokenAuth = require("./util/tokenAuth.js");
 
 //HTTP Server
 const express = require("express");
@@ -91,7 +92,7 @@ io.on("connection", socket => {
 });
 
 //Join
-app.post("/join", require("./api/join"));
+app.post("/join", tokenAuth, require("./api/join"));
 
 //Authenticate
 app.post("/auth", require("./api/auth"));
