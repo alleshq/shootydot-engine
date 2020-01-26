@@ -16,7 +16,7 @@ module.exports = () => {
             player.speedBoost.full -= 1;
             if (player.speedBoost.full <= 0) player.speedBoost.active = false;
         } else {
-            if (player.speedBoost.full < 100) player.speedBoost.full += 1;
+            if (player.speedBoost.full < 100) player.speedBoost.full += 0.2;
         }
 
         //Map Bounds
