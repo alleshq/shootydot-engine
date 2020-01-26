@@ -46,9 +46,21 @@ io.on("connection", socket => {
 
     //Player Action
     socket.on("action", data => {
-        console.log(data);
+        const player = game.players[data.id];
+        if (!player || player.secret !== data.secret) return;
+
+        switch (data.action) {
+
+            //Change Direction
+            case "changeDirection":
+                player.direction = data.param;
+                break;
+
+        }
+
+        game.players[data.id] = player;
     });
-    
+
 });
 
 //Join
