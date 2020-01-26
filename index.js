@@ -32,6 +32,10 @@ setInterval(() => {
             });
             return players;
         })(),
+        bullets: game.bullets.map(bullet => ({
+            x: bullet.x,
+            y: bullet.y
+        })),
         stars: game.stars
     });
 
