@@ -30,7 +30,8 @@ setInterval(() => {
                     x: player.x,
                     y: player.y,
                     speedBoost: player.speedBoost,
-                    plague: player.plague
+                    plague: player.plague,
+                    color: player.color
                 };
             });
             return players;
