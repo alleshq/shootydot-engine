@@ -2,14 +2,14 @@ const game = require("../gameData");
 const config = require("../config");
 const randomString = require("randomstring").generate;
 
-module.exports = (id, name, effects) => {
+module.exports = (id, name, effects, color) => {
     const secret = randomString(config.secretLength);
     game.players[id] = {
         name,
         score: 100,
         effects,
         secret,
-        color: "#e74c3c",
+        color,
         plague: Math.floor(Math.random() * 5) === 0,
         bulletPower: 2,
         speed: 2,

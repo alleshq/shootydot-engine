@@ -9,7 +9,10 @@ module.exports = async (req, res, next) => {
     //Get Token
     oauth("token", token).then(response => {
         const tokenData = response.data;
-        if (!tokenData.scopes.includes("basic-profile")) return oauthFail();
+        if (
+            !tokenData.scopes.includes("basic-profile") ||
+            !tokenData.scopes.includes("team-list")
+        ) return oauthFail();
         
         //Get data about user
         oauth("me", token).then(response => {
