@@ -5,5 +5,7 @@
     "stars": 500,
     "secretLength": 128,
     "maxBullets": 500,
-    "bulletSpeed": 5
+    "bulletSpeed": 5,
+    "playerHitbox": 10,
+    "bulletHitGain": 5
 }

@@ -10,7 +10,7 @@ module.exports = (id, name, effects) => {
         effects,
         secret,
         plague: false,
-        bulletPower: 1,
+        bulletPower: 2,
         speed: 2,
         speedBoost: {
             active: false,

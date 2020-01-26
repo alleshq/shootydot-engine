@@ -19,5 +19,36 @@ module.exports = () => {
             bullet.y < 0 - config.mapSize / 2 ||
             bullet.y > 0 + config.mapSize / 2
         ) return removeBullet(i);
+
+        //Player Hit
+        Object.keys(game.players).forEach(id => {
+            const player = game.players[id];
+            if (
+                player.x - config.playerHitbox < bullet.x &&
+                player.x + config.playerHitbox > bullet.x &&
+                player.y - config.playerHitbox < bullet.y &&
+                player.y + config.playerHitbox > bullet.y &&
+                id !== bullet.owner
+            ) {
+                //Get Bullet Owner
+                const owner = game.players[bullet.owner];
+                if (owner) {
+
+                    //Award Points
+                    game.players[bullet.owner].score += config.bulletHitGain;
+
+                }
+
+                //Deduct points from victim
+                player.score -= bullet.bulletPower;
+
+                //Spread Plague
+                if (bullet.plague) player.plague = true;
+
+                //Update victim and remove bullet
+                game.players[id] = player;
+                removeBullet(i);
+            }
+        });
     });
 };
