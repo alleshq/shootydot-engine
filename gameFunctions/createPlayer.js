@@ -11,7 +11,10 @@ module.exports = (id, name, effects) => {
         secret,
         plague: false,
         speed: 3,
-        speedBoost: false,
+        speedBoost: {
+            active: false,
+            full: 0
+        },
         x: 0,
         y: 0,
         direction: 0
