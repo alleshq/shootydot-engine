@@ -3,10 +3,12 @@ const config = require("./config");
 
 //HTTP Server
 const express = require("express");
-const app = express();
+const app = express(); //Express Server
 const http = require("http").createServer(app);
-const io = require("socket.io")(http);
-app.use(require("cors")());
+const io = require("socket.io")(http); //Socket.io Server
+app.use(require("cors")()); //CORS Headers
+app.use(require("body-parser").json({extended: false})); //Body Parser
+app.use((err, req, res, next) => res.status(500).json({err: "internalError"})); //Express Error Handling
 http.listen(8081);
 
 //Setup Functions
@@ -90,6 +92,9 @@ io.on("connection", socket => {
 
 //Join
 app.post("/join", require("./api/join"));
+
+//Authenticate
+app.post("/auth", require("./api/auth"));
 
 //Stats
 app.get("/stats", require("./api/stats"));
