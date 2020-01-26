@@ -13,7 +13,7 @@ module.exports = (id, name, effects) => {
         speed: 2,
         speedBoost: {
             active: false,
-            full: 0
+            full: 50
         },
         x: 0,
         y: 0,
