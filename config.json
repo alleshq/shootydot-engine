@@ -3,5 +3,6 @@
     "mapSize": 1000,
     "innerMap": 500,
     "stars": 500,
-    "secretLength": 128
+    "secretLength": 128,
+    "maxBullets": 500
 }

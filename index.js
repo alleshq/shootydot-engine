@@ -61,6 +61,20 @@ io.on("connection", socket => {
                 if (player.speedBoost.full < 100) return;
                 player.speedBoost.active = true;
                 break;
+            
+            //Shoot Bullet
+            case "shoot":
+                if (game.bullets.length > config.maxBullets) return; //Maximum Bullets in Arena
+                player.score--;
+                game.bullets.push({
+                    owner: data.id,
+                    bulletPower: player.bulletPower,
+                    direction: player.direction,
+                    x: player.x,
+                    y: player.y,
+                    plague: player.plague
+                });
+                break;
 
         }
 
