@@ -21,7 +21,7 @@ module.exports = () => {
         ) return removeBullet(i);
 
         //Player Hit
-        Object.keys(game.players).forEach(async id => {
+        Object.keys(game.players).forEach(id => {
             const player = game.players[id];
             if (
                 player.x - config.playerHitbox < bullet.x &&

@@ -4,7 +4,7 @@ const db = require("../util/mongo");
 const calculateMovement = require("../util/move");
 
 module.exports = () => {
-    Object.keys(game.players).forEach(id => {
+    Object.keys(game.players).forEach(async id => {
         const player = game.players[id];
 
         //Movement
