@@ -1,13 +1,16 @@
 const game = require("../gameData");
 const config = require("../config");
+const db = require("../util/mongo");
 const randomString = require("randomstring").generate;
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
     if (Object.keys(game.players).length > 50) return res.status(503).json({err: "serverFull"});
     if (Object.keys(game.players).includes(req.user.id)) return res.status(429).json({err: "alreadyPlaying"});
 
     const teams = req.user.teams.map(team => team.teamid);
     const secret = randomString(config.secretLength);
+
+    await db("players").updateOne({_id: req.user.id}, {$inc: {plays: 1}});
 
     game.players[req.user.id] = {
         name: req.user.username,

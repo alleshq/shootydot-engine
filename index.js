@@ -15,6 +15,13 @@ http.listen(8081);
 //Setup Functions
 require("./gameFunctions/generateStars")();
 
+//Database
+const {connect} = require("./util/mongo");
+connect((err) => {
+    if (err) throw err;
+    console.log("Connected to MongoDB");
+});
+
 //Tick
 setInterval(() => {
 
