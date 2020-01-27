@@ -39,7 +39,7 @@ module.exports = () => {
         } else {
 
             //Add Kills
-            if (player.killedBy && players[player.killedBy]) {
+            if (player.killedBy && game.players[player.killedBy]) {
                 await db("players").updateOne({_id: player.killedBy}, {$inc: {kills: 1}});
             }
 
