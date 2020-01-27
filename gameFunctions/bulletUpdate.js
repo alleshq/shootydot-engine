@@ -21,7 +21,7 @@ module.exports = () => {
         ) return removeBullet(i);
 
         //Player Hit
-        Object.keys(game.players).forEach(id => {
+        Object.keys(game.players).forEach(async id => {
             const player = game.players[id];
             if (
                 player.x - config.playerHitbox < bullet.x &&
@@ -44,6 +44,11 @@ module.exports = () => {
 
                 //Spread Plague
                 if (bullet.plague) player.plague = true;
+
+                //Set Killed By
+                if (player.score <= 0) {
+                    player.killedBy = bullet.owner;
+                }
 
                 //Update victim and remove bullet
                 game.players[id] = player;

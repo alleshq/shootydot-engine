@@ -1,5 +1,6 @@
 const game = require("../gameData");
 const config = require("../config");
+const db = require("../util/mongo");
 const calculateMovement = require("../util/move");
 
 module.exports = () => {
@@ -36,7 +37,15 @@ module.exports = () => {
         if (player.score > 0) {
             game.players[id] = player;
         } else {
+
+            //Add Kills
+            if (player.killedBy && players[player.killedBy]) {
+                await db("players").updateOne({_id: player.killedBy}, {$inc: {kills: 1}});
+            }
+
+            //Remove Player
             delete game.players[id];
+
         }
     });
 };
