@@ -1,23 +1,31 @@
-const createPlayer = require("../gameFunctions/createPlayer");
 const game = require("../gameData");
+const config = require("../config");
+const randomString = require("randomstring").generate;
 
 module.exports = (req, res) => {
     if (Object.keys(game.players).length > 50) return res.status(503).json({err: "serverFull"});
     if (Object.keys(game.players).includes(req.user.id)) return res.status(429).json({err: "alreadyPlaying"});
 
     const teams = req.user.teams.map(team => team.teamid);
-    var color;
-    if (teams.includes("alles")) {
-        color = "#4287f5";
-    } else {
-        color = "#e74c3c";
-    }
+    const secret = randomString(config.secretLength);
+
+    game.players[req.user.id] = {
+        name: req.user.username,
+        score: 100,
+        effects: [],
+        secret,
+        color: teams.includes("alles") ? "#4287f5" : "#e74c3c",
+        plague: Math.floor(Math.random() * 5) === 0,
+        bulletPower: 2,
+        speed: 2,
+        speedBoost: {
+            active: false,
+            full: 50
+        },
+        x: Math.floor(Math.random() * config.innerMap) - config.innerMap / 2,
+        y: Math.floor(Math.random() * config.innerMap) - config.innerMap / 2,
+        direction: 0
+    };
     
-    const secret = createPlayer(
-        req.user.id,
-        req.user.username,
-        [],
-        color
-    );
     res.json({id: req.user.id, secret});
 };
