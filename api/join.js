@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
     game.players[req.user.id] = {
         name: req.user.username,
         score: 100,
-        effects: [],
+        effects: req.user.data.effects,
         secret,
         color: teams.includes("alles") ? "#4287f5" : "#e74c3c",
         plague: Math.floor(Math.random() * 5) === 0,

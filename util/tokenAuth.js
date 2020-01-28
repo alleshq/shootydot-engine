@@ -25,7 +25,8 @@ module.exports = async (req, res, next) => {
                     _id: req.user.id,
                     plays: 0,
                     kills: 0,
-                    donor: false
+                    donor: false,
+                    effects: []
                 };
                 await db("players").insertOne(playerData);
             }
