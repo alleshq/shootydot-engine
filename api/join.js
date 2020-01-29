@@ -5,7 +5,6 @@ const randomString = require("randomstring").generate;
 
 module.exports = async (req, res) => {
     if (Object.keys(game.players).length > 50) return res.status(503).json({err: "serverFull"});
-    if (Object.keys(game.players).includes(req.user.id)) return res.status(429).json({err: "alreadyPlaying"});
 
     const teams = req.user.teams.map(team => team.teamid);
     const secret = randomString(config.secretLength);
