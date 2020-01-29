@@ -10,7 +10,7 @@ const io = require("socket.io")(http); //Socket.io Server
 app.use(require("cors")()); //CORS Headers
 app.use(require("body-parser").json({extended: false})); //Body Parser
 app.use((err, req, res, next) => res.status(500).json({err: "internalError"})); //Express Error Handling
-http.listen(8081);
+http.listen(8001);
 
 //Setup Functions
 require("./gameFunctions/generateStars")();
