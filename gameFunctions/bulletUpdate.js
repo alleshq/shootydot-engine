@@ -37,10 +37,20 @@ module.exports = () => {
                     //Award Points
                     game.players[bullet.owner].score += config.bulletHitGain;
 
+                    //Medusa Effect
+                    if (owner.effects.includes("honey")) {
+                        player.speed = 0.5;
+                    }
+
                 }
 
-                //Deduct points from victim
-                player.score -= bullet.bulletPower;
+                if (owner && owner.effects.includes("healer")) {
+                    //Deduct Player Score
+                    player.score += bullet.bulletPower;
+                } else {
+                    //Healing Effect
+                    player.score -= bullet.bulletPower;
+                }
 
                 //Spread Plague
                 if (bullet.plague) player.plague = true;
