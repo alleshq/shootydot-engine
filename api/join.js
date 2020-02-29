@@ -5,8 +5,8 @@ const randomString = require("randomstring").generate;
 
 module.exports = async (req, res) => {
     if (Object.keys(game.players).length > 50) return res.status(503).json({err: "serverFull"});
-
-    const teams = req.user.teams.map(team => team.teamid);
+    
+    const teams = req.user.teams.map(team => team.slug);
     const secret = randomString(config.secretLength);
 
     await db("players").updateOne({_id: req.user.id}, {$inc: {plays: 1}});
